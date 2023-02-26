@@ -34,8 +34,6 @@ const addFilter = (type, tag) => {
     asideEl.setAttribute('aria-hidden', false);
     const tagLowerCase = tag.toLowerCase();
 
-    let result = false;
-
     if (type === "data-role" && !selected.role.includes(tagLowerCase)) {
         selected.role.push(tagLowerCase);
         generateFilterBtn(type, tag);
