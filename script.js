@@ -32,6 +32,7 @@ const generateFilterBtn = (type, tag) => {
 
 const addFilter = (type, tag) => {
     asideEl.setAttribute('aria-hidden', false);
+    clearEl.disabled = false; 
     const tagLowerCase = tag.toLowerCase();
 
     if (type === "data-role" && !selected.role.includes(tagLowerCase)) {
@@ -91,6 +92,7 @@ const clearFilters = () => {
     };
 
     asideEl.setAttribute('aria-hidden', true);
+    clearEl.disabled = true;
     filterEl.innerHTML = '';
     selectedLength = 0;
 
