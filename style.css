@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap');
+
+:root {
+    --desaturated-dark-cyan: hsl(180, 29%, 50%);
+    --desaturated-dark-cyan-transparent: hsl(180 29% 50% / .2);
+    --light-grayish-cyan-bg: hsl(180, 52%, 96%);
+    --light-grayish-cyan-filter: hsl(180, 31%, 95%);
+    --dark-grayish-cyan: hsl(180, 8%, 52%);
+    --very-dark-grayish-cyan: hsl(180, 14%, 20%);
+    --white: hsl(0, 0%, 100%);
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 15px;
+}
+
+body {
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 500;
+    background: var(--light-grayish-cyan-bg);
+}
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+header {
+    background: var(--desaturated-dark-cyan);
+    height: 10rem;
+}
+header img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+.container {
+    max-width: calc(1110px + 2rem);
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+    margin-bottom: 4rem;
+}
+aside[aria-hidden="true"] {
+    opacity: 0;
+    transform: translateY(-4rem);
+}
+.card {
+    background: var(--white);
+    box-shadow: 0 .6rem .75rem var(--desaturated-dark-cyan-transparent);
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+    justify-content: space-between;
+    padding: 0 1.5rem 1.5rem;
+    border-radius: .5rem;
+    margin-bottom: 3rem;
+    position: relative;
+}
+@media (min-width: 768px) {
+    .card {
+        padding: 2rem 2.5rem;
+        flex-flow: row;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+}
+
+.card--filter {
+    transform: translateY(-2.5rem);
+    padding-block: 1.5rem;
+    margin-bottom: .5rem;
+    flex-flow: row;
+    align-items: center;
+}
+
+.card.error {
+    flex-flow: column;
+}
+.card.featured::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: block;
+    width: .3rem;
+    background: var(--desaturated-dark-cyan);
+    border-top-left-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+}
+.card--animation {
+    animation: showCard .5s cubic-bezier(0.175, 0.885, 0.32, 1.275) .1s forwards;
+    opacity: 0;
+}
+@keyframes showCard {
+    from {
+        opacity: 0;
+        transform: translateY(-4rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.badge {
+    text-transform: uppercase;
+    color: var(--white);
+    font-weight: 700;
+    padding: .5rem .6rem .35rem;
+    border-radius: 1rem;
+    font-size: .9rem;
+}
+.badge + .badge {
+    margin-left: .3rem;
+}
+
+.badge-primary {
+    background: var(--desaturated-dark-cyan);
+}
+
+.badge-secondary {
+    background: var(--very-dark-grayish-cyan);
+}
+
+.transition,
+.transition:hover {
+    transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card__listing {
+    display: flex;
+    flex-flow: column;
+}
+@media (min-width: 768px) {
+    .card__listing {
+        align-items: center;
+        flex-flow: row;
+        gap: 1.5rem;
+    }
+}
+@media (max-width: 767px) {
+    .card__image {
+        margin-top: -24px;
+        margin-bottom: .5rem;
+    }
+    .card__image img {
+        width: 48px;
+    }
+}
+
+.card__text {
+    display: grid;
+    gap: .5rem;
+}
+.card__text--company-name {
+    color: var(--desaturated-dark-cyan);
+    font-weight: 700;
+    margin-right: .75rem;
+}
+@media (min-width: 768px) {
+    .card__text--company-name {
+        font-size: 1.2rem;
+    }
+}
+.card__text h2 a {
+    color: var(--very-dark-grayish-cyan);
+    text-decoration: none;
+    font-size: 1rem;
+}
+.card__text h2 a:hover {
+    color: var(--desaturated-dark-cyan);
+    text-decoration: none;
+}
+@media (min-width: 768px) {
+    .card__text h2 a {
+        font-size: 1.5rem;
+    }
+}
+.card__text--description {
+    list-style: none;
+    display: flex;
+    gap: .5rem;
+    font-size: 1rem;
+    color: var(--dark-grayish-cyan);
+}
+@media (min-width: 768px) {
+    .card__text--description {
+        gap: 1rem;
+        font-size: 1.2rem;
+    }
+}
+.card__text--description li:not(:first-child)::before {
+    content: '•';
+    margin-right: .5rem;
+}
+@media (min-width: 768px) { 
+    .card__text--description li:not(:first-child)::before {
+        margin-right: 1rem;
+    }  
+}
+.card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.card__tags.listing {
+    border-top: 1px solid var(--dark-grayish-cyan);
+    padding-top: 1rem;
+}
+@media (min-width: 768px) {
+    .card__tags.listing {
+        border-top: none;
+        padding-top: 0;
+    }
+}
+.card__tags button,
+.card__tags span {
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    background: var(--light-grayish-cyan-filter);
+    color: var(--desaturated-dark-cyan);
+    padding: .5rem .5rem .25rem;
+    margin: 0;
+    border: 0;
+    border-radius: .3rem;
+    display: inline-block;
+    line-height: 1.1;
+}
+.card__tags button:hover {
+    color: var(--light-grayish-cyan-bg);
+    background: var(--desaturated-dark-cyan);
+    cursor: pointer;
+}
+.card__tags span {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-right: .75rem;
+}
+.card__tags span + button {
+    background: var(--desaturated-dark-cyan);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding: .6rem .6rem .15rem;
+}
+.card__tags span + button:hover {
+    background: var(--very-dark-grayish-cyan);
+}
+.card__tags--filter {
+    display: flex;
+}
+.card__clear button {
+    background: none;
+    padding: .5rem;
+    margin: 0;
+    border: 0;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--dark-grayish-cyan);
+}
+.card__clear button:hover {
+    color: var(--desaturated-dark-cyan);
+    text-decoration: underline;
+    cursor: pointer;
+}

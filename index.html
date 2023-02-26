@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Job Listings</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <header>
+      <picture>
+        <source
+          srcset="images/bg-header-desktop.svg"
+          media="(min-width: 768px)"
+        />
+        <img src="images/bg-header-mobile.svg" alt="Job Listings" />
+      </picture>
+      <h1 class="sr-only">Job Listings</h1>
+    </header>
+    <div class="container">
+      <aside aria-hidden="true" class="transition">
+        <div class="card card--filter">
+          <div class="card__tags filter"></div>
+          <div class="card__clear">
+            <button class="clear transition">Clear</button>
+          </div>
+        </div>
+      </aside>
+      <main></main>
+    </div>
+  </body>
+</html>
